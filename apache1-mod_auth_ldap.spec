@@ -44,6 +44,7 @@ BuildRequires:	openldap-devel
 BuildRequires:	%{apxs}
 Prereq:		%{_sbindir}/apxs
 Prereq:		apache(EAPI)
+Prereq:		apache-mod_auth
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_prefix}/lib/apache
