@@ -1,6 +1,7 @@
---- ./Makefile.in.orig	Fri Aug 10 21:03:22 2001
-+++ ./Makefile.in	Fri Aug 10 21:07:45 2001
-@@ -14,7 +14,7 @@
+diff -Nur auth_ldap-1.6.0.orig/Makefile.in auth_ldap-1.6.0/Makefile.in
+--- auth_ldap-1.6.0.orig/Makefile.in	Wed Jul  4 16:37:55 2001
++++ auth_ldap-1.6.0/Makefile.in	Tue Feb 19 14:05:51 2002
+@@ -14,11 +14,11 @@
  AIX_LDFLAGS_SHLIB=@AIX_LDFLAGS_SHLIB@
  MYCC=@MYCC@
  
@@ -9,6 +10,11 @@
  
  html: FAQ.html Changes.html auth_ldap.html
  
+-OBJS=auth_ldap.o auth_ldap_config.o auth_ldap_cache.o auth_ldap_cache_mgr.o
++OBJS=mod_auth_ldap.o auth_ldap_config.o auth_ldap_cache.o auth_ldap_cache_mgr.o
+ 
+ CFLAGS=`$(APXS) -q CFLAGS` $(FRONTPAGE) $(SSL) $(SHARED_CACHE) $(OPENLDAP)
+ CFLAGS_SHLIB=`$(APXS) -q CFLAGS_SHLIB` 
 @@ -27,7 +27,7 @@
  LD_SHLIB=`$(APXS) -q LD_SHLIB`
  LDFLAGS_SHLIB=$(EXTRA_LDFLAGS) `$(APXS) -q LDFLAGS_SHLIB` $(AIX_LDFLAGS_SHLIB)
@@ -30,3 +36,55 @@
  
  clean:
  	rm -f *.so *.o *~ core $(AIX_EXP) TAGS 
+@@ -58,7 +59,7 @@
+ $(AIX_EXP):
+ 	@echo auth_ldap_module > $@
+ 
+-auth_ldap.o: auth_ldap.h auth_ldap_cache_mgr.h
++mod_auth_ldap.o: auth_ldap.h auth_ldap_cache_mgr.h
+ auth_ldap_config.o: auth_ldap.h auth_ldap_cache_mgr.h
+ auth_ldap_cache.o: auth_ldap.h auth_ldap_cache_mgr.h
+ auth_ldap_cache_mgr.o: auth_ldap.h auth_ldap_cache_mgr.h
+diff -Nur auth_ldap-1.6.0.orig/configure.in auth_ldap-1.6.0/configure.in
+--- auth_ldap-1.6.0.orig/configure.in	Wed Jul  4 16:40:26 2001
++++ auth_ldap-1.6.0/configure.in	Tue Feb 19 14:06:28 2002
+@@ -1,4 +1,4 @@
+-AC_INIT(auth_ldap.c)
++AC_INIT(mod_auth_ldap.c)
+ AC_ARG_WITH(apxs,          --with-apxs                   Path to Apache's apxs command, test $withval = no || APXS=$withval)
+ AC_ARG_WITH(ldap-sdk,      --with-ldap-sdk=netscape|openldap  Specify the LDAP SDK to use)
+ AC_ARG_WITH(sdk-directory, --with-sdk-headers            Specify the path to the LDAP SDK header files)
+@@ -7,7 +7,7 @@
+ AC_ARG_WITH(ssl,           --with-ssl                    Build with ssl support, test $withval = no || SSL=-DWITH_SSL)
+ AC_ARG_WITH(shared-cache,  --with-shared-cache           Build with shared cache support, 
+ test $withval = no || SHARED_CACHE=-DWITH_SHARED_LDAP_CACHE, SHARED_CACHE=-DWITH_SHARED_LDAP_CACHE)
+-AC_ARG_WITH(activate,      --with-activate               Activate auth_ldap.so in http.conf, 
++AC_ARG_WITH(activate,      --with-activate               Activate mod_auth_ldap.so in http.conf, 
+ test $withval = yes && ACTIVATE=-a)
+ AC_ARG_WITH(frontpage,     --with-frontpage              Enable FrontPage hack, 
+ test $withval=no || FRONTPAGE=-DAUTH_LDAP_FRONTPAGE_HACK)
+@@ -20,7 +20,7 @@
+ 
+ case $target in
+     *aix*)
+-	AIX_EXP=auth_ldap.exp
++	AIX_EXP=mod_auth_ldap.exp
+ 	AIX_LDFLAGS_SHLIB=-bE:`echo $@|sed -e 's:\.so$$:.exp:'`
+ 	;;
+ esac
+@@ -39,13 +39,13 @@
+ AC_CHECK_PROG(APXS, apxs, apxs, $with_apxs)
+ 
+ AC_MSG_CHECKING(whether apxs works)
+-test -z "$APXS" && AC_MSG_ERROR(Cannot build auth_ldap without a valid apxs program)
++test -z "$APXS" && AC_MSG_ERROR(Cannot build mod_auth_ldap without a valid apxs program)
+ $APXS -q CFLAGS > /dev/null
+ if test $? = 0; then
+    AC_MSG_RESULT(yes)
+ else
+    AC_MSG_RESULT(no)
+-   AC_MSG_ERROR(Cannot build auth_ldap without a valid apxs program)
++   AC_MSG_ERROR(Cannot build mod_auth_ldap without a valid apxs program)
+ fi
+ 
+ if test -n "$with_sdk_headers"; then
