@@ -11,8 +11,8 @@ URL:		http://www.rudedog.org/auth_ldap/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This is an authentication module for Apache that allows you to authenticate
-HTTP clients using user entries in an LDAP directory.
+This is an authentication module for Apache that allows you to
+authenticate HTTP clients using user entries in an LDAP directory.
 
 %prep
 %setup -q
