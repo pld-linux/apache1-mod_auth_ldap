@@ -4,7 +4,7 @@ Summary(pl):	Modu³ autentykacji LDAP dla Apache
 Summary(pt_BR):	Este módulo provê autenticação LDAP para o Apache
 Name:		apache-mod_auth_ldap
 Version:	1.6.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
