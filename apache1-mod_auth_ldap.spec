@@ -1,3 +1,4 @@
+%define 	apxs	/usr/sbin/apxs
 Summary:	This is a LDAP authentication module for Apache
 Summary(cs):	Autentizaèní modul LDAP pro WWW server Apache
 Summary(da):	En LDAP-autenticeringsmodul for Apache
@@ -40,6 +41,8 @@ URL:		http://www.rudedog.org/auth_ldap/
 BuildRequires:	autoconf
 BuildRequires:	apache(EAPI)-devel
 BuildRequires:	openldap-devel
+BuildRequires:	%{apxs}
+Prereq:		%{_sbindir}/apxs
 Prereq:		apache(EAPI)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -127,7 +130,7 @@ LDAP-katalog.
 %build
 autoconf
 %configure \
-	--with-apxs=/usr/sbin/apxs \
+	--with-apxs=%{apxs} \
 	--with-ldap-sdk=openldap \
 	--without-ssl
 
@@ -144,14 +147,14 @@ gzip -9nf PROBLEMS
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/sbin/apxs -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+%{_sbindir}/apxs -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
 if [ -f /var/lock/subsys/httpd ]; then
 	/etc/rc.d/init.d/httpd restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-	/usr/sbin/apxs -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+	%{_sbindir}/apxs -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
 	if [ -f /var/lock/subsys/httpd ]; then
 		/etc/rc.d/init.d/httpd restart 1>&2
 	fi
