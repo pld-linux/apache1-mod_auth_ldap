@@ -17,6 +17,9 @@ BuildRequires:	openldap-devel
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_libexecdir	%{_prefix}/lib/apache
+
+
 %description
 This is an authentication module for Apache that allows you to
 authenticate HTTP clients using user entries in an LDAP directory.
@@ -53,10 +56,18 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf PROBLEMS
 
+%post
+%{_sbindir}/apxs -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+
+%preun
+if [ "$1" = "0" ]; then
+	%{_sbindir}/apxs -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+fi
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc *.html *.gz
-%attr(755,root,root) %{_libdir}/apache/mod_auth_ldap.so
+%attr(755,root,root) %{_libexecdir}/mod_auth_ldap.so
