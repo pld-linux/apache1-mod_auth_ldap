@@ -19,7 +19,7 @@ Summary(zh_CN):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache-mod_auth_ldap
 Version:	1.6.0
 Release:	6
-License:	GPL
+License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
 Patch0:		%{name}-makefile.patch
