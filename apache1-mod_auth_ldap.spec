@@ -1,4 +1,5 @@
-%define 	apxs	/usr/sbin/apxs
+%define	mod_name	auth_ldap
+%define apxs	/usr/sbin/apxs1
 Summary:	This is a LDAP authentication module for Apache
 Summary(cs):	AutentizaХnМ modul LDAP pro WWW server Apache
 Summary(da):	En LDAP-autenticeringsmodul for Apache
@@ -16,9 +17,9 @@ Summary(ru):	Аутентификационный модуль LDAP для сервера Apache
 Summary(sl):	Avtentikacijski modul LDAP za Apache
 Summary(sv):	En LDAP autentiseringsmodul fЖr Apache
 Summary(zh_CN):	уБйгсцсз Apache ╣д LDAP яИж╓дё©И
-Name:		apache-mod_auth_ldap
+Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
-Release:	8
+Release:	1
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
@@ -26,15 +27,16 @@ Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
 Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRequires:	autoconf
-BuildRequires:	apache(EAPI)-devel
+BuildRequires:	apache1-devel
 BuildRequires:	openldap-devel
 BuildRequires:	%{apxs}
-PreReq:		apache(EAPI)
-PreReq:		apache-mod_auth
+PreReq:		apache1
+PreReq:		apache1-mod_auth
 Requires(post,preun):	%{apxs}
+Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libexecdir	%{_prefix}/lib/apache
+%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
 
 %description
 This is an authentication module for Apache that allows you to
@@ -127,28 +129,28 @@ mv -f auth_ldap.c mod_auth_ldap.c
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_pkglibdir}
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+install mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{apxs} -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
-if [ -f /var/lock/subsys/httpd ]; then
-	/etc/rc.d/init.d/httpd restart 1>&2
+%{apxs} -e -a -n auth_ldap %{_pkglibdir}/mod_auth_ldap.so 1>&2
+if [ -f /var/lock/subsys/apache ]; then
+	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-	%{apxs} -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
-	if [ -f /var/lock/subsys/httpd ]; then
-		/etc/rc.d/init.d/httpd restart 1>&2
+	%{apxs} -e -A -n auth_ldap %{_pkglibdir}/mod_auth_ldap.so 1>&2
+	if [ -f /var/lock/subsys/apache ]; then
+		/etc/rc.d/init.d/apache restart 1>&2
 	fi
 fi
 
 %files
 %defattr(644,root,root,755)
 %doc *.html PROBLEMS
-%attr(755,root,root) %{_libexecdir}/mod_auth_ldap.so
+%attr(755,root,root) %{_pkglibdir}/mod_auth_ldap.so
