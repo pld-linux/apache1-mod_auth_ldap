@@ -1,6 +1,6 @@
 Summary:	This is a LDAP authentication module for Apache
 Summary(es):	Este módulo proporciona autenticación LDAP para Apache
-Summary(pl):	Modu³ autentyfikacyjny dla Apache
+Summary(pl):	Modu³ autentykacji LDAP dla Apache
 Summary(pt_BR):	Este módulo provê autenticação LDAP para o Apache
 Name:		apache-mod_auth_ldap
 Version:	1.6.0
@@ -12,6 +12,7 @@ Group(pl):	Sieciowe/Serwery
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
 Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
+BuildRequires:	autoconf
 BuildRequires:	apache(EAPI)-devel
 BuildRequires:	openldap-devel
 Prereq:		apache(EAPI)
@@ -29,7 +30,7 @@ LDAP.
 
 %description -l pl
 W pakiecie znajduje siê modu³ do Apache, który pozwala na
-autentyfikacjê klientów HTTP przy u¿yciu LDAP.
+autentykacjê klientów HTTP przy u¿yciu LDAP.
 
 %description -l pt_BR
 Este módulo permite que você autentique clientes HTTP usando o
@@ -55,6 +56,9 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf PROBLEMS
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post
 /usr/sbin/apxs -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
 
@@ -62,9 +66,6 @@ gzip -9nf PROBLEMS
 if [ "$1" = "0" ]; then
 	/usr/sbin/apxs -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
