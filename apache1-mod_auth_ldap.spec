@@ -19,7 +19,7 @@ Summary(sv):	En LDAP autentiseringsmodul f鰎 Apache
 Summary(zh_CN):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
-Release:	1
+Release:	1.3
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
@@ -27,16 +27,17 @@ Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
 Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRequires:	autoconf
-BuildRequires:	apache1-devel
+BuildRequires:	apache1-devel >= 1.3.33-2
 BuildRequires:	openldap-devel
 BuildRequires:	%{apxs}
-PreReq:		apache1
+PreReq:		apache1 >= 1.3.33-2
 PreReq:		apache1-mod_auth
-Requires(post,preun):	%{apxs}
+Requires(triggerpostun):	%{apxs}
 Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR)
+%define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
+%define		_sysconfdir	%(%{apxs} -q SYSCONFDIR 2>/dev/null)
 
 %description
 This is an authentication module for Apache that allows you to
@@ -129,28 +130,36 @@ mv -f auth_ldap.c mod_auth_ldap.c
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_pkglibdir}
+install -d $RPM_BUILD_ROOT{%{_pkglibdir},%{_sysconfdir}/conf.d}
 
 install mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
+
+echo 'LoadModule %{mod_name}_module	modules/mod_%{mod_name}.so' > \
+	$RPM_BUILD_ROOT%{_sysconfdir}/conf.d/90_mod_%{mod_name}.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{apxs} -e -a -n auth_ldap %{_pkglibdir}/mod_auth_ldap.so 1>&2
 if [ -f /var/lock/subsys/apache ]; then
 	/etc/rc.d/init.d/apache restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-	%{apxs} -e -A -n auth_ldap %{_pkglibdir}/mod_auth_ldap.so 1>&2
 	if [ -f /var/lock/subsys/apache ]; then
 		/etc/rc.d/init.d/apache restart 1>&2
 	fi
 fi
 
+%triggerpostun -- apache1-mod_%{mod_name} < 1.6.0-1.1
+# check that they're not using old apache.conf
+if grep -q '^Include conf\.d' /etc/apache/apache.conf; then
+	%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
+fi
+
 %files
 %defattr(644,root,root,755)
 %doc *.html PROBLEMS
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/mod_auth_ldap.so
