@@ -22,6 +22,7 @@ Release:	8
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
+# Source0-md5:	ff7de9027fe8852facd27be93462c5cc
 Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRequires:	autoconf
