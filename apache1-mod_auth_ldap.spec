@@ -8,7 +8,7 @@ Summary(fr):	Module d'authentification LDAP pour Apache
 Summary(id):	Module LDAP authentication untuk Apache
 Summary(it):	Modulo di autenticazione LDPA per Apache
 Summary(ja):	Apache ÍÑ¤Î LDAP Ç§¾Ú¥â¥¸¥å¡¼¥ë
-Summary(no):	En LDAP-autentiseringsmodul for Apache
+Summary(nb):	En LDAP-autentiseringsmodul for Apache
 Summary(pl):	Modu³ autentykacji LDAP dla Apache
 Summary(pt):	Um módulo de autenticação de LDAP para o Apache
 Summary(pt_BR):	Este módulo provê autenticação LDAP para o Apache
@@ -80,7 +80,7 @@ inserimenti utente in una directory LDPA.
 ¥¨¥ó¥È¥ê¤ò»È¤Ã¤¿ HTTP ¥¯¥é¥¤¥¢¥ó¥È¤ÎÇ§¾Ú¤ò²ÄÇ½¤Ë¤¹¤ë¤¿¤á¤ÎÇ§¾Ú
 ¥â¥¸¥å¡¼¥ë¤¬´Þ¤Þ¤ì¤Æ¤¤¤Þ¤¹¡£
 
-%description -l no
+%description -l nb
 Denne pakken inneholder en autentiseringsmodul for webtjeneren Apache
 - med auth_ldap installert kan HTTP-klienter autentiseres mot
 brukerinformasjon i en LDAP-katalog.
