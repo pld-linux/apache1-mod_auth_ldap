@@ -18,7 +18,7 @@ Summary(sv):	En LDAP autentiseringsmodul för Apache
 Summary(zh_CN):	ÕâÊÇÓÃÓÚ Apache µÄ LDAP ÑéÖ¤Ä£¿é
 Name:		apache-mod_auth_ldap
 Version:	1.6.0
-Release:	4
+Release:	5
 License:	GPL
 Group:		Networking/Daemons
 Group(cs):	Sí»ové/Démoni
