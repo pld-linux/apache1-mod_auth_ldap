@@ -9,7 +9,7 @@ Summary(id):	Module LDAP authentication untuk Apache
 Summary(it):	Modulo di autenticazione LDPA per Apache
 Summary(ja):	Apache ÍÑ¤Î LDAP Ç§¾Ú¥â¥¸¥å¡¼¥ë
 Summary(nb):	En LDAP-autentiseringsmodul for Apache
-Summary(pl):	Modu³ autentykacji LDAP dla Apache
+Summary(pl):	Modu³ uwierzytelnienia LDAP dla Apache
 Summary(pt):	Um módulo de autenticação de LDAP para o Apache
 Summary(pt_BR):	Este módulo provê autenticação LDAP para o Apache
 Summary(ru):	áÕÔÅÎÔÉÆÉËÁÃÉÏÎÎÙÊ ÍÏÄÕÌØ LDAP ÄÌÑ ÓÅÒ×ÅÒÁ Apache
@@ -86,8 +86,8 @@ Denne pakken inneholder en autentiseringsmodul for webtjeneren Apache
 brukerinformasjon i en LDAP-katalog.
 
 %description -l pl
-W pakiecie znajduje siê modu³ do Apache, który pozwala na autentykacjê
-klientów HTTP przy u¿yciu LDAP.
+W pakiecie znajduje siê modu³ do Apache, który pozwala na
+uwierzytelnianie klientów HTTP przy u¿yciu LDAP.
 
 %description -l pt
 Este pacote contém um módulo de autenticação para o servidor Web
