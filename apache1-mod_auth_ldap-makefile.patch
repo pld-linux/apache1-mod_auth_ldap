@@ -1,0 +1,32 @@
+--- ./Makefile.in.orig	Fri Aug 10 21:03:22 2001
++++ ./Makefile.in	Fri Aug 10 21:07:45 2001
+@@ -14,7 +14,7 @@
+ AIX_LDFLAGS_SHLIB=@AIX_LDFLAGS_SHLIB@
+ MYCC=@MYCC@
+ 
+-all: auth_ldap.so
++all: mod_auth_ldap.so
+ 
+ html: FAQ.html Changes.html auth_ldap.html
+ 
+@@ -27,7 +27,7 @@
+ LD_SHLIB=`$(APXS) -q LD_SHLIB`
+ LDFLAGS_SHLIB=$(EXTRA_LDFLAGS) `$(APXS) -q LDFLAGS_SHLIB` $(AIX_LDFLAGS_SHLIB)
+ 
+-auth_ldap.so: $(OBJS) $(AIX_EXP)
++mod_auth_ldap.so: $(OBJS) $(AIX_EXP)
+ 	@echo $(LD_SHLIB) $(LDFLAGS_SHLIB) -o $@ $(OBJS) $(LIBS)
+ 	@$(LD_SHLIB) $(LDFLAGS_SHLIB) -o $@ $(OBJS) $(LIBS) 
+ 
+@@ -46,8 +46,9 @@
+ 	cd .. && tar cvzf $$tar $$dirname/ --exclude-from=/tmp/excl.$$$$; \
+ 	rm -f /tmp/excl.$$$$
+ 
+-install: auth_ldap.so
+-	$(APXS) -i $(ACTIVATE) auth_ldap.so
++install: mod_auth_ldap.so
++	mkdir -p $(DESTDIR)/usr/lib/apache
++	install $< $(DESTDIR)/usr/lib/apache
+ 
+ clean:
+ 	rm -f *.so *.o *~ core $(AIX_EXP) TAGS 
