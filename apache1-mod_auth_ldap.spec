@@ -18,7 +18,7 @@ Summary(sv):	En LDAP autentiseringsmodul f鰎 Apache
 Summary(zh_CN):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache-mod_auth_ldap
 Version:	1.6.0
-Release:	7
+Release:	8
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
@@ -129,8 +129,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf PROBLEMS
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -150,5 +148,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.html *.gz
+%doc *.html PROBLEMS
 %attr(755,root,root) %{_libexecdir}/mod_auth_ldap.so
