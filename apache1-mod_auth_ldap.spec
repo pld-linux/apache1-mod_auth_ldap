@@ -116,7 +116,7 @@ LDAP-katalog.
 mv -f auth_ldap.c mod_auth_ldap.c
 
 %build
-autoconf
+%{__autoconf}
 %configure \
 	--with-apxs=%{apxs} \
 	--with-ldap-sdk=openldap \
