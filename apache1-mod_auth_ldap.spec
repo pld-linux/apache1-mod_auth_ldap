@@ -4,9 +4,10 @@ Version:	1.4.0
 Release:	1
 License:	GPL
 Group:		Networking/Daemons
+Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 Source0:	http://www.rudedog.org/auth_ldap/%{name}-%{version}.tar.gz
-Patch0:		auth_ldap-redhat.patch
+Patch0:		%{name}-redhat.patch
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
