@@ -19,7 +19,7 @@ authenticate HTTP clients using user entries in an LDAP directory.
 %patch0 -p1
 
 %build
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
