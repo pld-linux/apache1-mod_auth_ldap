@@ -133,14 +133,14 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%{_sbindir}/apxs -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+%{apxs} -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
 if [ -f /var/lock/subsys/httpd ]; then
 	/etc/rc.d/init.d/httpd restart 1>&2
 fi
 
 %preun
 if [ "$1" = "0" ]; then
-	%{_sbindir}/apxs -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+	%{apxs} -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
 	if [ -f /var/lock/subsys/httpd ]; then
 		/etc/rc.d/init.d/httpd restart 1>&2
 	fi
