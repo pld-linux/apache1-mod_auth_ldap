@@ -19,7 +19,7 @@ Summary(sv):	En LDAP autentiseringsmodul f鰎 Apache
 Summary(zh_CN):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
-Release:	1.3
+Release:	2
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
