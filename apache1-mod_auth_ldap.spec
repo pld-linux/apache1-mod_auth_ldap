@@ -61,10 +61,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /usr/sbin/apxs -e -a -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+if [ -f /var/lock/subsys/httpd ]; then
+	/etc/rc.d/init.d/httpd restart 1>&2
+fi
 
 %preun
 if [ "$1" = "0" ]; then
 	/usr/sbin/apxs -e -A -n auth_ldap %{_libexecdir}/mod_auth_ldap.so 1>&2
+	if [ -f /var/lock/subsys/httpd ]; then
+		/etc/rc.d/init.d/httpd restart 1>&2
+	fi
 fi
 
 %files
