@@ -26,12 +26,12 @@ Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
 # Source0-md5:	ff7de9027fe8852facd27be93462c5cc
 Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
-BuildRequires:	autoconf
-BuildRequires:	apache1-devel >= 1.3.33-2
-BuildRequires:	openldap-devel
 BuildRequires:	%{apxs}
-PreReq:		apache1 >= 1.3.33-2
-PreReq:		apache1-mod_auth
+BuildRequires:	apache1-devel >= 1.3.33-2
+BuildRequires:	autoconf
+BuildRequires:	openldap-devel
+Requires:	apache1 >= 1.3.33-2
+Requires:	apache1-mod_auth
 Requires(triggerpostun):	%{apxs}
 Obsoletes:	apache-mod_%{mod_name} <= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -86,7 +86,7 @@ inserimenti utente in una directory LDPA.
 %description -l nb
 Denne pakken inneholder en autentiseringsmodul for webtjeneren Apache
 - med auth_ldap installert kan HTTP-klienter autentiseres mot
-brukerinformasjon i en LDAP-katalog.
+  brukerinformasjon i en LDAP-katalog.
 
 %description -l pl
 W pakiecie znajduje siê modu³ do Apache, który pozwala na
@@ -161,5 +161,5 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc *.html PROBLEMS
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/mod_auth_ldap.so
