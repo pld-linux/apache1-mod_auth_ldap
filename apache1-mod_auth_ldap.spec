@@ -19,7 +19,7 @@ Summary(sv):	En LDAP autentiseringsmodul f鰎 Apache
 Summary(zh_CN):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
-Release:	3
+Release:	4
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
@@ -32,7 +32,7 @@ BuildRequires:	autoconf
 BuildRequires:	openldap-devel >= 2.3.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
-Requires:	apache1 >= 1.3.33-2
+Requires:	apache1(EAPI)
 Requires:	apache1-mod_auth
 Obsoletes:	apache-mod_auth_ldap <= 1.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
