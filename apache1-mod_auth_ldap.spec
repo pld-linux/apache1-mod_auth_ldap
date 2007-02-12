@@ -1,22 +1,22 @@
 %define	mod_name	auth_ldap
 %define apxs	/usr/sbin/apxs1
 Summary:	This is a LDAP authentication module for Apache
-Summary(cs.UTF-8):   Autentizační modul LDAP pro WWW server Apache
-Summary(da.UTF-8):   En LDAP-autenticeringsmodul for Apache
-Summary(de.UTF-8):   Ein LDAP Authentifizierungsmodul für Apache
-Summary(es.UTF-8):   Este módulo proporciona autenticación LDAP para Apache
-Summary(fr.UTF-8):   Module d'authentification LDAP pour Apache
-Summary(id.UTF-8):   Module LDAP authentication untuk Apache
-Summary(it.UTF-8):   Modulo di autenticazione LDPA per Apache
-Summary(ja.UTF-8):   Apache 用の LDAP 認証モジュール
-Summary(nb.UTF-8):   En LDAP-autentiseringsmodul for Apache
-Summary(pl.UTF-8):   Moduł uwierzytelnienia LDAP dla Apache
-Summary(pt.UTF-8):   Um módulo de autenticação de LDAP para o Apache
-Summary(pt_BR.UTF-8):   Este módulo provê autenticação LDAP para o Apache
-Summary(ru.UTF-8):   Аутентификационный модуль LDAP для сервера Apache
-Summary(sl.UTF-8):   Avtentikacijski modul LDAP za Apache
-Summary(sv.UTF-8):   En LDAP autentiseringsmodul för Apache
-Summary(zh_CN.UTF-8):   这是用于 Apache 的 LDAP 验证模块
+Summary(cs.UTF-8):	Autentizační modul LDAP pro WWW server Apache
+Summary(da.UTF-8):	En LDAP-autenticeringsmodul for Apache
+Summary(de.UTF-8):	Ein LDAP Authentifizierungsmodul für Apache
+Summary(es.UTF-8):	Este módulo proporciona autenticación LDAP para Apache
+Summary(fr.UTF-8):	Module d'authentification LDAP pour Apache
+Summary(id.UTF-8):	Module LDAP authentication untuk Apache
+Summary(it.UTF-8):	Modulo di autenticazione LDPA per Apache
+Summary(ja.UTF-8):	Apache 用の LDAP 認証モジュール
+Summary(nb.UTF-8):	En LDAP-autentiseringsmodul for Apache
+Summary(pl.UTF-8):	Moduł uwierzytelnienia LDAP dla Apache
+Summary(pt.UTF-8):	Um módulo de autenticação de LDAP para o Apache
+Summary(pt_BR.UTF-8):	Este módulo provê autenticação LDAP para o Apache
+Summary(ru.UTF-8):	Аутентификационный модуль LDAP для сервера Apache
+Summary(sl.UTF-8):	Avtentikacijski modul LDAP za Apache
+Summary(sv.UTF-8):	En LDAP autentiseringsmodul för Apache
+Summary(zh_CN.UTF-8):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
 Release:	4
