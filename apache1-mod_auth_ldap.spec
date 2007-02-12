@@ -1,22 +1,22 @@
 %define	mod_name	auth_ldap
 %define apxs	/usr/sbin/apxs1
 Summary:	This is a LDAP authentication module for Apache
-Summary(cs):	Autentizaèní modul LDAP pro WWW server Apache
-Summary(da):	En LDAP-autenticeringsmodul for Apache
-Summary(de):	Ein LDAP Authentifizierungsmodul für Apache
-Summary(es):	Este módulo proporciona autenticación LDAP para Apache
-Summary(fr):	Module d'authentification LDAP pour Apache
-Summary(id):	Module LDAP authentication untuk Apache
-Summary(it):	Modulo di autenticazione LDPA per Apache
-Summary(ja):	Apache ÍÑ¤Î LDAP Ç§¾Ú¥â¥¸¥å¡¼¥ë
-Summary(nb):	En LDAP-autentiseringsmodul for Apache
-Summary(pl):	Modu³ uwierzytelnienia LDAP dla Apache
-Summary(pt):	Um módulo de autenticação de LDAP para o Apache
-Summary(pt_BR):	Este módulo provê autenticação LDAP para o Apache
-Summary(ru):	áÕÔÅÎÔÉÆÉËÁÃÉÏÎÎÙÊ ÍÏÄÕÌØ LDAP ÄÌÑ ÓÅÒ×ÅÒÁ Apache
-Summary(sl):	Avtentikacijski modul LDAP za Apache
-Summary(sv):	En LDAP autentiseringsmodul för Apache
-Summary(zh_CN):	ÕâÊÇÓÃÓÚ Apache µÄ LDAP ÑéÖ¤Ä£¿é
+Summary(cs.UTF-8):   AutentizaÄnÃ­ modul LDAP pro WWW server Apache
+Summary(da.UTF-8):   En LDAP-autenticeringsmodul for Apache
+Summary(de.UTF-8):   Ein LDAP Authentifizierungsmodul fÃ¼r Apache
+Summary(es.UTF-8):   Este mÃ³dulo proporciona autenticaciÃ³n LDAP para Apache
+Summary(fr.UTF-8):   Module d'authentification LDAP pour Apache
+Summary(id.UTF-8):   Module LDAP authentication untuk Apache
+Summary(it.UTF-8):   Modulo di autenticazione LDPA per Apache
+Summary(ja.UTF-8):   Apache ç”¨ã® LDAP èªè¨¼ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+Summary(nb.UTF-8):   En LDAP-autentiseringsmodul for Apache
+Summary(pl.UTF-8):   ModuÅ‚ uwierzytelnienia LDAP dla Apache
+Summary(pt.UTF-8):   Um mÃ³dulo de autenticaÃ§Ã£o de LDAP para o Apache
+Summary(pt_BR.UTF-8):   Este mÃ³dulo provÃª autenticaÃ§Ã£o LDAP para o Apache
+Summary(ru.UTF-8):   ĞÑƒÑ‚ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ†Ğ¸Ğ¾Ğ½Ğ½Ñ‹Ğ¹ Ğ¼Ğ¾Ğ´ÑƒĞ»ÑŒ LDAP Ğ´Ğ»Ñ ÑĞµÑ€Ğ²ĞµÑ€Ğ° Apache
+Summary(sl.UTF-8):   Avtentikacijski modul LDAP za Apache
+Summary(sv.UTF-8):   En LDAP autentiseringsmodul fÃ¶r Apache
+Summary(zh_CN.UTF-8):   è¿™æ˜¯ç”¨äº Apache çš„ LDAP éªŒè¯æ¨¡å—
 Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
 Release:	4
@@ -44,76 +44,76 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This is an authentication module for Apache that allows you to
 authenticate HTTP clients using user entries in an LDAP directory.
 
-%description -l cs
-Balíèek obsahuje autentizaèní modul pro WWW server Apache, kterı
-umo¾òuje autentizovat HTTP klienty proti polo¾kám v adresáøové slu¾bì
+%description -l cs.UTF-8
+BalÃ­Äek obsahuje autentizaÄnÃ­ modul pro WWW server Apache, kterÃ½
+umoÅ¾Åˆuje autentizovat HTTP klienty proti poloÅ¾kÃ¡m v adresÃ¡Å™ovÃ© sluÅ¾bÄ›
 LDAP.
 
-%description -l da
+%description -l da.UTF-8
 Denne pakke indeholder en autenticeringsmodul for webtjeneren Apache -
 med auth_ldap installeret kan HTTP-klienter autenticeres mod
 brugerinformation i et LDAP-katalog.
 
-%description -l de
-Dieses Paket enthält ein Authentifizierungs-Modul für den Apache
-Webserver, das Ihnen ermöglicht, HTTP-Clients mit Hilfe von
-Benutzereinträgen in einem LDAP-Verzeichniss zu authentifizieren.
+%description -l de.UTF-8
+Dieses Paket enthÃ¤lt ein Authentifizierungs-Modul fÃ¼r den Apache
+Webserver, das Ihnen ermÃ¶glicht, HTTP-Clients mit Hilfe von
+BenutzereintrÃ¤gen in einem LDAP-Verzeichniss zu authentifizieren.
 
-%description -l es
-Este paquete contiene un módulo de autenticación para el servidor
+%description -l es.UTF-8
+Este paquete contiene un mÃ³dulo de autenticaciÃ³n para el servidor
 Apache web que le permite autenticar clientes HTTP usando entradas de
 usuario en un directorio LDAP.
 
-%description -l fr
+%description -l fr.UTF-8
 Ce paquetage contient un module d'authentification pour le serveur Web
 Apache, qui vous permet d'authentifier les clients HTTP en utilisant
-les entrées utilisateur dans un répertoire LDAP.
+les entrÃ©es utilisateur dans un rÃ©pertoire LDAP.
 
-%description -l id
+%description -l id.UTF-8
 Ini adalah authentication module untuk Apache yang memungkinkan anda
 melakukan otentikasi HTTP client menggunakan user entry di dalam LADP
 directory.
 
-%description -l it
+%description -l it.UTF-8
 Questo pacchetto contiene un modulo di autenticazione per il Web
 server Apache che consente di autenticare i client HTTP tramite gli
 inserimenti utente in una directory LDPA.
 
-%description -l ja
-¤³¤Î¥Ñ¥Ã¥±¡¼¥¸¤Ë¤Ï Apache Web ¥µ¡¼¥Ğ¡¼¤Ç LDAP ¥Ç¥£¥ì¥¯¥È¥êÆâ¤Î¥æ¡¼¥¶¡¼
-¥¨¥ó¥È¥ê¤ò»È¤Ã¤¿ HTTP ¥¯¥é¥¤¥¢¥ó¥È¤ÎÇ§¾Ú¤ò²ÄÇ½¤Ë¤¹¤ë¤¿¤á¤ÎÇ§¾Ú
-¥â¥¸¥å¡¼¥ë¤¬´Ş¤Ş¤ì¤Æ¤¤¤Ş¤¹¡£
+%description -l ja.UTF-8
+ã“ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã«ã¯ Apache Web ã‚µãƒ¼ãƒãƒ¼ã§ LDAP ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼
+ã‚¨ãƒ³ãƒˆãƒªã‚’ä½¿ã£ãŸ HTTP ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®èªè¨¼ã‚’å¯èƒ½ã«ã™ã‚‹ãŸã‚ã®èªè¨¼
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒå«ã¾ã‚Œã¦ã„ã¾ã™ã€‚
 
-%description -l nb
+%description -l nb.UTF-8
 Denne pakken inneholder en autentiseringsmodul for webtjeneren Apache
 - med auth_ldap installert kan HTTP-klienter autentiseres mot
   brukerinformasjon i en LDAP-katalog.
 
-%description -l pl
-W pakiecie znajduje siê modu³ do Apache, który pozwala na
-uwierzytelnianie klientów HTTP przy u¿yciu LDAP.
+%description -l pl.UTF-8
+W pakiecie znajduje siÄ™ moduÅ‚ do Apache, ktÃ³ry pozwala na
+uwierzytelnianie klientÃ³w HTTP przy uÅ¼yciu LDAP.
 
-%description -l pt
-Este pacote contém um módulo de autenticação para o servidor Web
+%description -l pt.UTF-8
+Este pacote contÃ©m um mÃ³dulo de autenticaÃ§Ã£o para o servidor Web
 Apache que lhe permite autenticar os clientes HTTP usando registos de
 utilizadores numa directoria LDAP.
 
-%description -l pt_BR
-Este módulo permite que você autentique clientes HTTP usando o
-diretório LDAP.
+%description -l pt_BR.UTF-8
+Este mÃ³dulo permite que vocÃª autentique clientes HTTP usando o
+diretÃ³rio LDAP.
 
-%description -l ru
-üÔÏ ÍÏÄÕÌØ ÁÕÔÅÎÔÉÆÉËÁÃÉÉ ÄÌÑ Apache, ĞÏÚ×ÏÌÑÀİÉÊ ÉÄÅÎÔÉÆÉÃÉÒÏ×ÁÔØ
-HTTP-ËÌÉÅÎÔÏ× ÎÁ ÏÓÎÏ×Å ÚÁĞÉÓÅÊ ĞÏÌØÚÏ×ÁÔÅÌÑ × ËÁÔÁÌÏÇÅ LDAP.
+%description -l ru.UTF-8
+Ğ­Ñ‚Ğ¾ Ğ¼Ğ¾Ğ´ÑƒĞ»ÑŒ Ğ°ÑƒÑ‚ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ†Ğ¸Ğ¸ Ğ´Ğ»Ñ Apache, Ğ¿Ğ¾Ğ·Ğ²Ğ¾Ğ»ÑÑÑ‰Ğ¸Ğ¹ Ğ¸Ğ´ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸Ñ†Ğ¸Ñ€Ğ¾Ğ²Ğ°Ñ‚ÑŒ
+HTTP-ĞºĞ»Ğ¸ĞµĞ½Ñ‚Ğ¾Ğ² Ğ½Ğ° Ğ¾ÑĞ½Ğ¾Ğ²Ğµ Ğ·Ğ°Ğ¿Ğ¸ÑĞµĞ¹ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ Ğ² ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğµ LDAP.
 
-%description -l sv
-Detta paket innehåller en autenticeringsmodul för webbservern Apache
-som låter dig autenticera HTTP-klienter med använderposter i en
+%description -l sv.UTF-8
+Detta paket innehÃ¥ller en autenticeringsmodul fÃ¶r webbservern Apache
+som lÃ¥ter dig autenticera HTTP-klienter med anvÃ¤nderposter i en
 LDAP-katalog.
 
-%description -l zh_CN
-ÕâÊÇÓÃÓÚ Apache µÄÑéÖ¤Ä£¿é£¬ËüÔÊĞíÄúÊ¹ÓÃ LDAP Ä¿Â¼ÖĞµÄÓÃ»§ÏîÑéÖ¤ HTTP
-¿Í»§»ú¡£
+%description -l zh_CN.UTF-8
+è¿™æ˜¯ç”¨äº Apache çš„éªŒè¯æ¨¡å—ï¼Œå®ƒå…è®¸æ‚¨ä½¿ç”¨ LDAP ç›®å½•ä¸­çš„ç”¨æˆ·é¡¹éªŒè¯ HTTP
+å®¢æˆ·æœºã€‚
 
 %prep
 %setup -q -n auth_ldap-%{version}
