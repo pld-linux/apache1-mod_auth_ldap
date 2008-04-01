@@ -19,7 +19,7 @@ Summary(sv.UTF-8):	En LDAP autentiseringsmodul för Apache
 Summary(zh_CN.UTF-8):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
 Version:	1.6.0
-Release:	4
+Release:	5
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
@@ -28,7 +28,8 @@ Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRequires:	apache1-devel >= 1.3.39
 BuildRequires:	autoconf
-BuildRequires:	openldap-devel >= 2.4.6
+BuildRequires:	lynx
+BuildRequires:	openldap-devel >= 2.3.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(triggerpostun):	%{apxs}
 Requires:	apache1(EAPI)
@@ -119,6 +120,8 @@ LDAP-katalog.
 %patch0 -p1
 mv -f auth_ldap.c mod_auth_ldap.c
 
+lynx -nolist -dump auth_ldap.html > auth_ldap.txt
+
 %build
 %{__autoconf}
 %configure \
@@ -151,11 +154,11 @@ fi
 %triggerpostun -- apache1-mod_%{mod_name} < 1.6.0-1.1
 # check that they're not using old apache.conf
 if grep -q '^Include conf\.d' /etc/apache/apache.conf; then
-	%{apxs} -e -A -n %{mod_name} %{_pkglibdir}/mod_%{mod_name}.so 1>&2
+	sed -i -e '/^\(Add\|Load\)Module.*mod_%{mod_name}\.\(so\|c\)/d' /etc/apache/apache.conf
 fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.html PROBLEMS
+%doc *.html PROBLEMS auth_ldap.txt
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/conf.d/*_mod_%{mod_name}.conf
 %attr(755,root,root) %{_pkglibdir}/mod_auth_ldap.so
