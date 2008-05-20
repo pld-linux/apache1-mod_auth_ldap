@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	ssl	# build with ssl (requires netscape sdk), tls is available with openldap
+#
 %define	mod_name	auth_ldap
 %define apxs	/usr/sbin/apxs1
 Summary:	This is a LDAP authentication module for Apache
@@ -18,18 +22,19 @@ Summary(sl.UTF-8):	Avtentikacijski modul LDAP za Apache
 Summary(sv.UTF-8):	En LDAP autentiseringsmodul för Apache
 Summary(zh_CN.UTF-8):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
-Version:	1.6.0
-Release:	7
+Version:	1.6.1
+Release:	1
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
-# Source0-md5:	ff7de9027fe8852facd27be93462c5cc
+# Source0-md5:	a78d8c5fc77086562ca056c226c97992
 Patch0:		%{name}-makefile.patch
 URL:		http://www.rudedog.org/auth_ldap/
 BuildRequires:	apache1-devel >= 1.3.39
 BuildRequires:	autoconf
 BuildRequires:	lynx
 BuildRequires:	openldap-devel >= 2.3.0
+%{?with_ssl:BuildRequires:	mozldap-devel}
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	apache1(EAPI)
 Requires:	apache1-mod_auth
@@ -126,7 +131,7 @@ lynx -nolist -dump auth_ldap.html > auth_ldap.txt
 %configure \
 	--with-apxs=%{apxs} \
 	--with-ldap-sdk=openldap \
-	--without-ssl
+	--with%{!?with_ssl:out}-ssl
 
 %{__make}
 
