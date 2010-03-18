@@ -1,9 +1,13 @@
+# TODO
+# - issue 29975
+# - alternative module: http://www.muquit.com/muquit/software/mod_auth_ldap/mod_auth_ldap.html
+# - http://www.muquit.com/muquit/software/mod_auth_ldap/mod_auth_ldap.tar.gz
 #
 # Conditional build:
 %bcond_with	ssl	# build with ssl (requires netscape sdk), tls is available with openldap
-#
-%define	mod_name	auth_ldap
-%define apxs	/usr/sbin/apxs1
+
+%define		mod_name	auth_ldap
+%define		apxs	/usr/sbin/apxs1
 Summary:	This is a LDAP authentication module for Apache
 Summary(cs.UTF-8):	Autentizační modul LDAP pro WWW server Apache
 Summary(da.UTF-8):	En LDAP-autenticeringsmodul for Apache
@@ -131,6 +135,7 @@ lynx -nolist -dump auth_ldap.html > auth_ldap.txt
 %configure \
 	--with-apxs=%{apxs} \
 	--with-ldap-sdk=openldap \
+	--with-shared-cache \
 	--with%{!?with_ssl:out}-ssl
 
 %{__make}
