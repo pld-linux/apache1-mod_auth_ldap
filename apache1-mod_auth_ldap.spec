@@ -2,6 +2,9 @@
 # - issue 29975
 # - alternative module: http://www.muquit.com/muquit/software/mod_auth_ldap/mod_auth_ldap.html
 # - http://www.muquit.com/muquit/software/mod_auth_ldap/mod_auth_ldap.tar.gz
+# - 1.6.1 fails to connect to ldap:
+#   Could not connect to LDAP server: No such file or directory
+#   Could not connect to LDAP server: Success
 #
 # Conditional build:
 %bcond_with	ssl	# build with ssl (requires netscape sdk), tls is available with openldap
@@ -26,8 +29,10 @@ Summary(sl.UTF-8):	Avtentikacijski modul LDAP za Apache
 Summary(sv.UTF-8):	En LDAP autentiseringsmodul för Apache
 Summary(zh_CN.UTF-8):	这是用于 Apache 的 LDAP 验证模块
 Name:		apache1-mod_%{mod_name}
+# 1.6.1 is broken, ensure it works for you before building this
+# meanwhile stable version is on "v1.6.0" branch
 Version:	1.6.1
-Release:	2
+Release:	2.1
 License:	BSD
 Group:		Networking/Daemons
 Source0:	http://www.rudedog.org/auth_ldap/auth_ldap-%{version}.tar.gz
