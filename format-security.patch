@@ -1,0 +1,11 @@
+--- auth_ldap-1.6.0/mod_auth_ldap.c~	2001-07-04 17:38:03.000000000 +0300
++++ auth_ldap-1.6.0/mod_auth_ldap.c	2016-05-12 10:35:41.559346956 +0300
+@@ -87,7 +87,7 @@
+ #if APACHE_RELEASE < 1030000
+   log_reason(buf, r->uri, r);
+ #else
+-  ap_log_rerror(APLOG_MARK, APLOG_ERR|APLOG_NOERRNO, r, buf);
++  ap_log_rerror(APLOG_MARK, APLOG_ERR|APLOG_NOERRNO, r, "%s", buf);
+ #endif
+ }
+ 
